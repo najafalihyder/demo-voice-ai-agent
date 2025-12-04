@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real Estate Voice AI Assistant – Pakistan</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f5f6fa;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #005bea, #00c6fb);
+      padding: 50px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 45px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 18px;
+      opacity: 0.9;
+      margin-bottom: 25px;
+    }
+
+    .cta-btn {
+      background: #fff;
+      color: #005bea;
+      padding: 14px 35px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+      border: 2px solid white;
+    }
+
+    .cta-btn:hover {
+      background: #005bea;
+      color: white;
+      border-color: #fff;
+    }
+
+    /* Section */
+    section {
+      padding: 70px 20px;
+      max-width: 1050px;
+      margin: auto;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    section p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 40px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-gap: 25px;
+      margin-top: 30px;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 14px;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 6px 25px rgba(0,0,0,0.12);
+    }
+
+    .feature-box h3 {
+      font-size: 22px;
+      color: #005bea;
+      margin-bottom: 12px;
+    }
+
+    /* Footer */
+    footer {
+      background: #1b1b1b;
+      color: #ddd;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 50px;
+    }
+
+    footer p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    /* VAPI Widget Positioning */
+    #vapi-container {
+      margin-top: 40px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header / Hero Section -->
+  <header>
+    <h1>Real Estate Voice AI Assistant</h1>
+    <p>Sell more. Book more clients. Automate 24/7 with an intelligent AI agent that speaks English & Urdu.</p>
+    <a href="#try" class="cta-btn">Try the AI Assistant</a>
+  </header>
+
+  <!-- Features Section -->
+  <section>
+    <h2>Why Real Estate Agents Love This AI?</h2>
+    <p>Our Voice AI Agent handles calls, answers questions, books property visits, and talks like a real human — in English or Urdu — perfect for the Pakistan real estate market.</p>
+
+    <div class="features">
+      <div class="feature-box">
+        <h3>🏡 Books Appointments</h3>
+        <p>Automatically books client meetings and property visits using real-time Google Calendar integration.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>🗣 Speaks English & Urdu</h3>
+        <p>Understands both languages instantly and replies naturally — perfect for local and international clients.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>⏱ 24/7 Automation</h3>
+        <p>Your AI agent works 24/7 — even when you’re sleeping — capturing every lead automatically.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>⚡ Real-Time Responses</h3>
+        <p>Uses VAPI's real-time expressions to understand the current date, time, availability, and user needs.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>🤝 Converts Leads Faster</h3>
+        <p>Gives instant replies, answers questions, and increases your conversions instantly.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>📱 Easy Integration</h3>
+        <p>Install on your website with one line of code, works on mobile & desktop both.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Try Section + VAPI Widget -->
+  <section id="try">
+    <h2>Try the AI Assistant</h2>
+    <p>Click the button below and start talking to your Real Estate Voice AI Assistant.</p>
+
+    <div id="vapi-container">
+      <!-- VAPI Widget Script -->
+      <script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async type="text/javascript"></script>
+
+      <vapi-widget
+        public-key="4e8cedee-b068-463d-ade3-c5909de42eb3"
+        assistant-id="fcab2b66-1d38-4c50-9a1f-f487d083ba03"
+        mode="voice"
+        theme="light"
+      ></vapi-widget>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Real Estate Voice AI – All Rights Reserved</p>
+    <p>Built for Pakistan’s real estate industry</p>
+  </footer>
+
+</body>
+</html>
