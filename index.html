@@ -72,30 +72,33 @@
       margin-bottom: 40px;
     }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      grid-gap: 25px;
-      margin-top: 30px;
-    }
-
-    .feature-box {
+    /* Timer Box */
+    .timer-box {
       background: white;
-      padding: 30px 25px;
-      border-radius: 14px;
+      padding: 15px;
+      border-radius: 10px;
+      width: 360px;
+      margin: 0 auto 20px auto;
       box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
-      transition: 0.3s;
-    }
-
-    .feature-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0px 6px 25px rgba(0,0,0,0.12);
-    }
-
-    .feature-box h3 {
-      font-size: 22px;
+      font-size: 16px;
+      font-weight: 600;
       color: #005bea;
-      margin-bottom: 12px;
+    }
+
+    .timer-bar-container {
+      width: 100%;
+      background: #e4e4e4;
+      border-radius: 8px;
+      margin-top: 8px;
+      height: 8px;
+    }
+
+    .timer-bar {
+      height: 8px;
+      background: #005bea;
+      border-radius: 8px;
+      width: 100%;
+      transition: width 1s linear;
     }
 
     /* Footer */
@@ -107,12 +110,6 @@
       margin-top: 50px;
     }
 
-    footer p {
-      margin: 5px 0;
-      font-size: 14px;
-    }
-
-    /* VAPI Widget Positioning */
     #vapi-container {
       margin-top: 40px;
       text-align: center;
@@ -122,61 +119,30 @@
 
 <body>
 
-  <!-- Header / Hero Section -->
   <header>
     <h1>Real Estate Voice AI Assistant</h1>
     <p>Sell more. Book more clients. Automate 24/7 with an intelligent AI agent that speaks English & Urdu.</p>
     <a href="#try" class="cta-btn">Try the AI Assistant</a>
   </header>
 
-  <!-- Features Section -->
   <section>
-    <h2>Why Real Estate Agents Love This AI?</h2>
-    <p>Our Voice AI Agent handles calls, answers questions, books property visits, and talks like a real human — in English or Urdu — perfect for the Pakistan real estate market.</p>
-
-    <div class="features">
-      <div class="feature-box">
-        <h3>🏡 Books Appointments</h3>
-        <p>Automatically books client meetings and property visits using real-time Google Calendar integration.</p>
-      </div>
-
-      <div class="feature-box">
-        <h3>🗣 Speaks English & Urdu</h3>
-        <p>Understands both languages instantly and replies naturally — perfect for local and international clients.</p>
-      </div>
-
-      <div class="feature-box">
-        <h3>⏱ 24/7 Automation</h3>
-        <p>Your AI agent works 24/7 — even when you’re sleeping — capturing every lead automatically.</p>
-      </div>
-
-      <div class="feature-box">
-        <h3>⚡ Real-Time Responses</h3>
-        <p>Uses VAPI's real-time expressions to understand the current date, time, availability, and user needs.</p>
-      </div>
-
-      <div class="feature-box">
-        <h3>🤝 Converts Leads Faster</h3>
-        <p>Gives instant replies, answers questions, and increases your conversions instantly.</p>
-      </div>
-
-      <div class="feature-box">
-        <h3>📱 Easy Integration</h3>
-        <p>Install on your website with one line of code, works on mobile & desktop both.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Try Section + VAPI Widget -->
-  <section id="try">
     <h2>Try the AI Assistant</h2>
-    <p>Click the button below and start talking to your Real Estate Voice AI Assistant.</p>
+    <p>Click the button below and talk to your Real Estate AI Assistant.</p>
+
+    <!-- TIMER + MESSAGE -->
+    <div class="timer-box">
+      ⏳ Please complete your query within <b>3 minutes</b>  
+      <div class="timer-bar-container">
+        <div class="timer-bar" id="timer-bar"></div>
+      </div>
+      <div id="timer-text">Time remaining: 3:00</div>
+    </div>
 
     <div id="vapi-container">
-      <!-- VAPI Widget Script -->
-      <script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async type="text/javascript"></script>
+      <script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async></script>
 
       <vapi-widget
+        id="vapi-widget"
         public-key="a2fbc1d8-47c4-4fd7-b4f3-7149a4c7a0ea"
         assistant-id="44a0d931-7e63-4ccb-94d5-a8a2ef13a39d"
         mode="voice"
@@ -185,11 +151,46 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 Real Estate Voice AI – All Rights Reserved</p>
     <p>Built for Pakistan’s real estate industry</p>
   </footer>
+
+<script>
+  let timeLeft = 180; // 3 minutes in seconds
+
+  const timerText = document.getElementById("timer-text");
+  const timerBar = document.getElementById("timer-bar");
+  const widget = document.getElementById("vapi-widget");
+
+  const countdown = setInterval(() => {
+    if (timeLeft <= 0) {
+      clearInterval(countdown);
+      timerText.textContent = "Time expired.";
+      timerBar.style.width = "0%";
+
+      // Disable widget
+      widget.style.pointerEvents = "none";
+      widget.style.opacity = "0.4";
+
+      alert("Your AI assistant time has ended.");
+
+      return;
+    }
+
+    timeLeft--;
+
+    // Update timer text
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = String(timeLeft % 60).padStart(2, "0");
+    timerText.textContent = `Time remaining: ${minutes}:${seconds}`;
+
+    // Update progress bar
+    const percentage = (timeLeft / 180) * 100;
+    timerBar.style.width = percentage + "%";
+
+  }, 1000);
+</script>
 
 </body>
 </html>
