@@ -3,71 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Voice Assistant for Real Estate</title>
+<title>AI Voice Receptionist for Real Estate</title>
 
 <style>
 :root {
-  --bg-dark: #0b1020;
-  --card-bg: rgba(255,255,255,0.08);
-  --border-glass: rgba(255,255,255,0.15);
-  --neon: #00f2ff;
-  --purple: #7f5cff;
-  --text-light: #e6e6eb;
-}
-
-* {
-  box-sizing: border-box;
+  --bg-dark: #070b1f;
+  --glass: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.15);
+  --cyan: #00f2ff;
+  --purple: #8b5cf6;
+  --text: #e5e7ff;
 }
 
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at top, #141b3a, #060814);
-  color: var(--text-light);
+  background: radial-gradient(circle at top, #121a45, #050714);
+  color: var(--text);
 }
 
 /* HERO */
 .hero {
-  padding: 100px 20px;
+  padding: 110px 20px;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 48px;
-  background: linear-gradient(90deg, var(--neon), var(--purple));
+  font-size: 50px;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .hero p {
   max-width: 850px;
-  margin: 20px auto;
+  margin: 25px auto;
   font-size: 18px;
-  line-height: 1.7;
+  line-height: 1.8;
   color: #cfd3ff;
 }
 
 .hero .btn {
   margin-top: 35px;
-  padding: 16px 38px;
+  padding: 16px 40px;
   border-radius: 40px;
-  background: linear-gradient(90deg, var(--neon), var(--purple));
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
   color: #000;
   font-weight: bold;
   text-decoration: none;
-  box-shadow: 0 0 30px rgba(0,242,255,0.5);
+  box-shadow: 0 0 35px rgba(0,242,255,0.5);
 }
 
 /* SECTION */
 section {
-  padding: 80px 20px;
+  padding: 90px 20px;
   max-width: 1200px;
   margin: auto;
 }
 
 .section-title {
   text-align: center;
-  font-size: 34px;
+  font-size: 36px;
   margin-bottom: 60px;
 }
 
@@ -79,83 +75,68 @@ section {
 }
 
 .card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-glass);
-  border-radius: 20px;
-  padding: 30px;
-  backdrop-filter: blur(15px);
-  transition: all 0.35s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.12), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.card:hover::before {
-  opacity: 1;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 32px;
+  backdrop-filter: blur(16px);
+  transition: 0.35s ease;
 }
 
 .card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  transform: translateY(-10px);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.6);
 }
 
 .card h3 {
   margin-top: 0;
-  color: var(--neon);
+  color: var(--cyan);
 }
 
 .card p {
   line-height: 1.6;
-  color: #d6d8ff;
+  color: #d6d9ff;
 }
 
-/* SPECIAL LANGUAGE CARD */
+/* LANGUAGE CARD */
 .language {
   border: 2px solid var(--purple);
-  box-shadow: 0 0 25px rgba(127,92,255,0.4);
+  box-shadow: 0 0 30px rgba(139,92,246,0.45);
 }
 
 .language span {
   display: inline-block;
-  margin-top: 12px;
-  padding: 8px 16px;
-  border-radius: 20px;
-  background: linear-gradient(90deg, var(--neon), var(--purple));
+  margin-top: 14px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
   color: #000;
   font-weight: bold;
 }
 
 /* CTA */
 .cta {
-  background: linear-gradient(135deg, #0f1535, #1a0f3a);
+  background: linear-gradient(135deg, #0d1338, #1c1048);
+  padding: 100px 20px;
   text-align: center;
-  padding: 90px 20px;
-  border-top: 1px solid var(--border-glass);
+  border-top: 1px solid var(--border);
 }
 
 .cta h2 {
-  font-size: 38px;
+  font-size: 40px;
 }
 
 .cta p {
-  max-width: 850px;
-  margin: 20px auto;
-  line-height: 1.7;
-  color: #d0d4ff;
+  max-width: 800px;
+  margin: 25px auto;
+  line-height: 1.8;
+  color: #d2d6ff;
 }
 
 /* FOOTER */
 footer {
-  background: #050713;
-  padding: 20px;
+  background: #040617;
+  padding: 22px;
   text-align: center;
   font-size: 14px;
   color: #888;
@@ -166,54 +147,55 @@ footer {
 <body>
 
 <div class="hero">
-  <h1>AI Voice Assistant for Real Estate</h1>
+  <h1>AI Voice Receptionist for Real Estate</h1>
   <p>
-    One AI that answers calls, talks to clients, explains properties,
-    books appointments, and handles 50+ leads at the same time —
-    like having 10 expert agents working 24/7.
+    Ek smart AI receptionist jo calls handle karti hai,
+    properties explain karti hai, appointments book karti hai,
+    aur aik hi waqt mein pachaas se zyada clients se baat kar sakti hai —
+    bilkul real human jaisa.
   </p>
-  <a href="#features" class="btn">Experience the AI</a>
+  <a href="#features" class="btn">Talk to the AI</a>
 </div>
 
 <section id="features">
-  <h2 class="section-title">What This AI Can Do</h2>
+  <h2 class="section-title">AI Kya Kya Kar Sakti Hai</h2>
 
   <div class="grid">
     <div class="card">
-      <h3>24/7 Always Online</h3>
-      <p>Your business never sleeps. The AI answers calls day and night.</p>
+      <h3>24/7 Available</h3>
+      <p>Subah ho ya raat — AI kabhi call miss nahi karti.</p>
     </div>
 
     <div class="card">
-      <h3>50+ Clients at Once</h3>
-      <p>No waiting. No missed calls. Unlimited conversations.</p>
+      <h3>50+ Clients Simultaneously</h3>
+      <p>Aik hi waqt mein multiple buyers se baat.</p>
     </div>
 
     <div class="card">
       <h3>Auto Lead Nurturing</h3>
-      <p>Follows up, answers questions, and warms up buyers automatically.</p>
+      <p>Interested clients ko follow-up aur guidance.</p>
     </div>
 
     <div class="card">
-      <h3>Property Info via Voice</h3>
-      <p>Explains prices, locations, payment plans & availability.</p>
+      <h3>Property Details via Voice</h3>
+      <p>Price, location, size, installment plans — sab explain.</p>
     </div>
 
     <div class="card">
       <h3>Appointment Booking</h3>
-      <p>Books site visits and meetings without human effort.</p>
+      <p>Site visit aur meetings automatic schedule.</p>
     </div>
 
     <div class="card">
-      <h3>No Salary. No Stress.</h3>
-      <p>No agents, no leaves, no complaints — just results.</p>
+      <h3>No Salary, No Leaves</h3>
+      <p>Ek AI jo kabhi thakti nahi.</p>
     </div>
 
     <div class="card language">
       <h3>Speaks English & Urdu 🇵🇰</h3>
       <p>
-        The AI understands and speaks both English and Urdu
-        for Pakistani buyers and overseas investors.
+        Local Pakistani buyers aur overseas investors
+        dono ke liye perfect.
       </p>
       <span>English | اردو</span>
     </div>
@@ -221,27 +203,27 @@ footer {
 </section>
 
 <div class="cta">
-  <h2>Talk to the AI Now</h2>
+  <h2>Live Demo — Abhi Baat Karein</h2>
   <p>
-    Click the voice widget and experience how your future
-    real estate assistant talks to clients in real-time.
+    Neeche voice assistant se baat karein
+    aur experience karein future of real estate sales.
   </p>
 </div>
 
 <footer>
-  © 2026 AI Voice Assistant — Real Estate Demo (Pakistan)
+  © 2025 AI Voice Receptionist — Real Estate Demo (Pakistan)
 </footer>
 
-<!-- VAPI WIDGET -->
-<script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async type="text/javascript"></script>
+<!-- ELEVENLABS VOICE AGENT -->
+<script
+  src="https://unpkg.com/@elevenlabs/convai-widget-embed"
+  async
+  type="text/javascript">
+</script>
 
-<vapi-widget
-  public-key="a2fbc1d8-47c4-4fd7-b4f3-7149a4c7a0ea"
-  assistant-id="44a0d931-7e63-4ccb-94d5-a8a2ef13a39d"
-  mode="voice"
-  theme="dark"
-  size="tiny" 
-></vapi-widget>
+<elevenlabs-convai
+  agent-id="agent_5301kba97eftecgstszaeq5ktqw6">
+</elevenlabs-convai>
 
 </body>
 </html>
