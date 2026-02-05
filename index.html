@@ -1,78 +1,191 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Retell Web Call Test</title>
-</head>
-<body>
-  <h1>Retell Web Voice Agent</h1>
-  <button id="startBtn">Start Call</button>
-  <button id="stopBtn">Stop Call</button>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Voice Assistant for Real Estate</title>
 
-  <script>
-    let ws = null;
-    let mediaStream = null;
-    let mediaRecorder = null;
-
-    const backendURL = "https://297bbdf4-6140-4a73-a3e5-4d20a8def37f-00-2vbo45asht0ra.pike.replit.dev/create-webcall"; 
-    const agentId = "agent_21828e215b6e799c3be2ab5429"; // example: agent-abcd-1234-xxxx-....
-
-    document.getElementById("startBtn").onclick = async () => {
-      console.log("Starting call...");
-
-      const session = await fetch(backendURL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ agentId })
-      }).then(r => r.json());
-
-      console.log("Session response:", session);
-
-      if (!session.websocket_url) {
-        alert("Backend error — check console");
-        return;
-      }
-
-      // CONNECT TO RETELL
-      ws = new WebSocket(session.websocket_url);
-      ws.binaryType = "arraybuffer";
-
-      ws.onopen = () => {
-        console.log("WebSocket connected");
-        startStreamingAudio();
-      };
-
-      ws.onmessage = (msg) => {
-        console.log("Incoming data:", msg.data);
-      };
-
-      ws.onclose = () => {
-        console.log("WebSocket closed");
-      };
-    };
-
-    async function startStreamingAudio() {
-      mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      mediaRecorder = new MediaRecorder(mediaStream);
-
-      mediaRecorder.ondataavailable = (e) => {
-        if (ws && ws.readyState === WebSocket.OPEN) {
-          e.data.arrayBuffer().then((buffer) => {
-            ws.send(buffer);
-          });
-        } else {
-          console.log("WS closed; skipping audio chunk.");
-        }
-      };
-
-      mediaRecorder.start(100); // send audio every 100ms
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f9fc;
+      color: #222;
     }
 
-    document.getElementById("stopBtn").onclick = () => {
-      if (mediaRecorder) mediaRecorder.stop();
-      if (mediaStream) mediaStream.getTracks().forEach(t => t.stop());
-      if (ws) ws.close();
-      console.log("Call ended");
-    };
-  </script>
+    header {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 30px;
+      background: #00d4ff;
+      color: #000;
+      font-weight: bold;
+      border-radius: 30px;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 70px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 50px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #0f2027;
+    }
+
+    .card p {
+      line-height: 1.6;
+    }
+
+    .cta {
+      background: #203a43;
+      color: white;
+      text-align: center;
+      padding: 70px 20px;
+    }
+
+    .cta h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: #0f2027;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>AI Voice Assistant for Real Estate</h1>
+  <p>
+    Never miss a lead again. Our AI voice assistant talks to your clients 24/7,
+    answers property questions, books appointments, and handles up to 50 clients
+    simultaneously — just like having 10 agents working nonstop.
+  </p>
+  <a href="#features" class="btn">See How It Works</a>
+</header>
+
+<section id="features">
+  <h2 class="section-title">Why Real Estate Agents Love This AI</h2>
+
+  <div class="features">
+    <div class="card">
+      <h3>24/7 Availability</h3>
+      <p>
+        Your AI never sleeps. It answers calls day and night, even on weekends and holidays.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Handles 50+ Clients at Once</h3>
+      <p>
+        Talk to dozens of buyers and investors simultaneously without waiting or missed calls.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Auto Client Nurturing</h3>
+      <p>
+        The AI follows up with interested clients, answers questions, and keeps them engaged.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Property Details via Voice</h3>
+      <p>
+        Prices, location, size, installment plans — the AI explains everything clearly.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Appointment Booking</h3>
+      <p>
+        Automatically schedules site visits and meetings so your sales team stays focused.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>No Salary, No Leaves</h3>
+      <p>
+        One-time setup. No monthly agent salaries, no sick leaves, no training headaches.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Try the AI Voice Assistant Now</h2>
+  <p>
+    Click the voice widget and talk to the AI like a real client.
+    Ask about properties, pricing, or book an appointment.
+  </p>
+</section>
+
+<footer>
+  © 2026 AI Real Estate Assistant — Demo for Pakistan Market
+</footer>
+
+<!-- VAPI WIDGET -->
+<script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async type="text/javascript"></script>
+
+<vapi-widget
+  public-key="a2fbc1d8-47c4-4fd7-b4f3-7149a4c7a0ea"
+  assistant-id="44a0d931-7e63-4ccb-94d5-a8a2ef13a39d"
+  mode="voice"
+  theme="dark"
+></vapi-widget>
+
 </body>
 </html>
