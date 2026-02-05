@@ -1,180 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Voice Assistant for Real Estate</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Voice Assistant for Real Estate</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f7f9fc;
-      color: #222;
-    }
+<style>
+:root {
+  --bg-dark: #0b1020;
+  --card-bg: rgba(255,255,255,0.08);
+  --border-glass: rgba(255,255,255,0.15);
+  --neon: #00f2ff;
+  --purple: #7f5cff;
+  --text-light: #e6e6eb;
+}
 
-    header {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: white;
-      padding: 80px 20px;
-      text-align: center;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    header h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #141b3a, #060814);
+  color: var(--text-light);
+}
 
-    header p {
-      font-size: 18px;
-      max-width: 800px;
-      margin: auto;
-      line-height: 1.6;
-    }
+/* HERO */
+.hero {
+  padding: 100px 20px;
+  text-align: center;
+}
 
-    .btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
-      background: #00d4ff;
-      color: #000;
-      font-weight: bold;
-      border-radius: 30px;
-      text-decoration: none;
-    }
+.hero h1 {
+  font-size: 48px;
+  background: linear-gradient(90deg, var(--neon), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-    section {
-      padding: 70px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+.hero p {
+  max-width: 850px;
+  margin: 20px auto;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #cfd3ff;
+}
 
-    .section-title {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 50px;
-    }
+.hero .btn {
+  margin-top: 35px;
+  padding: 16px 38px;
+  border-radius: 40px;
+  background: linear-gradient(90deg, var(--neon), var(--purple));
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 0 30px rgba(0,242,255,0.5);
+}
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-    }
+/* SECTION */
+section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
+.section-title {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 60px;
+}
 
-    .card h3 {
-      margin-top: 0;
-      color: #0f2027;
-    }
+/* CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
 
-    .card p {
-      line-height: 1.6;
-    }
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(15px);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
 
-    .cta {
-      background: #203a43;
-      color: white;
-      text-align: center;
-      padding: 70px 20px;
-    }
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.12), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
-    .cta h2 {
-      font-size: 36px;
-      margin-bottom: 15px;
-    }
+.card:hover::before {
+  opacity: 1;
+}
 
-    .cta p {
-      max-width: 800px;
-      margin: auto;
-      line-height: 1.6;
-    }
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
 
-    footer {
-      background: #0f2027;
-      color: #aaa;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
-  </style>
+.card h3 {
+  margin-top: 0;
+  color: var(--neon);
+}
+
+.card p {
+  line-height: 1.6;
+  color: #d6d8ff;
+}
+
+/* SPECIAL LANGUAGE CARD */
+.language {
+  border: 2px solid var(--purple);
+  box-shadow: 0 0 25px rgba(127,92,255,0.4);
+}
+
+.language span {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, var(--neon), var(--purple));
+  color: #000;
+  font-weight: bold;
+}
+
+/* CTA */
+.cta {
+  background: linear-gradient(135deg, #0f1535, #1a0f3a);
+  text-align: center;
+  padding: 90px 20px;
+  border-top: 1px solid var(--border-glass);
+}
+
+.cta h2 {
+  font-size: 38px;
+}
+
+.cta p {
+  max-width: 850px;
+  margin: 20px auto;
+  line-height: 1.7;
+  color: #d0d4ff;
+}
+
+/* FOOTER */
+footer {
+  background: #050713;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+}
+</style>
 </head>
 
 <body>
 
-<header>
+<div class="hero">
   <h1>AI Voice Assistant for Real Estate</h1>
   <p>
-    Never miss a lead again. Our AI voice assistant talks to your clients 24/7,
-    answers property questions, books appointments, and handles up to 50 clients
-    simultaneously — just like having 10 agents working nonstop.
+    One AI that answers calls, talks to clients, explains properties,
+    books appointments, and handles 50+ leads at the same time —
+    like having 10 expert agents working 24/7.
   </p>
-  <a href="#features" class="btn">See How It Works</a>
-</header>
+  <a href="#features" class="btn">Experience the AI</a>
+</div>
 
 <section id="features">
-  <h2 class="section-title">Why Real Estate Agents Love This AI</h2>
+  <h2 class="section-title">What This AI Can Do</h2>
 
-  <div class="features">
+  <div class="grid">
     <div class="card">
-      <h3>24/7 Availability</h3>
-      <p>
-        Your AI never sleeps. It answers calls day and night, even on weekends and holidays.
-      </p>
+      <h3>24/7 Always Online</h3>
+      <p>Your business never sleeps. The AI answers calls day and night.</p>
     </div>
 
     <div class="card">
-      <h3>Handles 50+ Clients at Once</h3>
-      <p>
-        Talk to dozens of buyers and investors simultaneously without waiting or missed calls.
-      </p>
+      <h3>50+ Clients at Once</h3>
+      <p>No waiting. No missed calls. Unlimited conversations.</p>
     </div>
 
     <div class="card">
-      <h3>Auto Client Nurturing</h3>
-      <p>
-        The AI follows up with interested clients, answers questions, and keeps them engaged.
-      </p>
+      <h3>Auto Lead Nurturing</h3>
+      <p>Follows up, answers questions, and warms up buyers automatically.</p>
     </div>
 
     <div class="card">
-      <h3>Property Details via Voice</h3>
-      <p>
-        Prices, location, size, installment plans — the AI explains everything clearly.
-      </p>
+      <h3>Property Info via Voice</h3>
+      <p>Explains prices, locations, payment plans & availability.</p>
     </div>
 
     <div class="card">
       <h3>Appointment Booking</h3>
-      <p>
-        Automatically schedules site visits and meetings so your sales team stays focused.
-      </p>
+      <p>Books site visits and meetings without human effort.</p>
     </div>
 
     <div class="card">
-      <h3>No Salary, No Leaves</h3>
+      <h3>No Salary. No Stress.</h3>
+      <p>No agents, no leaves, no complaints — just results.</p>
+    </div>
+
+    <div class="card language">
+      <h3>Speaks English & Urdu 🇵🇰</h3>
       <p>
-        One-time setup. No monthly agent salaries, no sick leaves, no training headaches.
+        The AI understands and speaks both English and Urdu
+        for Pakistani buyers and overseas investors.
       </p>
+      <span>English | اردو</span>
     </div>
   </div>
 </section>
 
-<section class="cta">
-  <h2>Try the AI Voice Assistant Now</h2>
+<div class="cta">
+  <h2>Talk to the AI Now</h2>
   <p>
-    Click the voice widget and talk to the AI like a real client.
-    Ask about properties, pricing, or book an appointment.
+    Click the voice widget and experience how your future
+    real estate assistant talks to clients in real-time.
   </p>
-</section>
+</div>
 
 <footer>
-  © 2026 AI Real Estate Assistant — Demo for Pakistan Market
+  © 2026 AI Voice Assistant — Real Estate Demo (Pakistan)
 </footer>
 
 <!-- VAPI WIDGET -->
